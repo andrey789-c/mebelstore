@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "^6.7.0",
     "@types/uuid": "^10.0.0",
+    "class-validator": "^0.14.2",
     "cookie-parser": "^1.4.7",
     "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",

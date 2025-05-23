@@ -49,10 +49,15 @@ export class CartService {
 
     if (!cart) return [];
 
-    return cart.items.map((item) => ({
-      ...item.product,
-      quantity: item.quantity,
-    }));
+    const info = this.calcInfoPrice(cart.items)
+
+    return {
+      cart: cart.items.map((item) => ({
+        ...item.product,
+        quantity: item.quantity,
+      })),
+      info
+    };
   }
 
   async changeToggleCountProduct(
@@ -167,5 +172,17 @@ export class CartService {
 
       return [];
     });
+  }
+
+  calcInfoPrice(items: any) {
+    const info: {price: number, discountPrice: number,  totalQuantity: number} = items.reduce((acc, item) => {
+      return {
+        price: acc.price + (Number(item.product.price) * item.quantity),
+        discountPrice: acc.discountPrice + (Number(item.product.discount_price || 0) * item.quantity),
+        totalQuantity: acc.totalQuantity + item.quantity
+      };
+    }, { price: 0, discountPrice: 0, totalQuantity: 0 });
+
+    return info
   }
 }

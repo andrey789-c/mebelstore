@@ -4,11 +4,10 @@ import { PrismaModule } from './prisma/prisma.module';
 import { CategoryModule } from './category/category.module';
 import { CartModule } from './cart/cart.module';
 import { AuthModule } from './auth/auth.module';
-import { AnonymousMiddleware } from './anonymous/anonymous.middleware';
-import { JwtService } from '@nestjs/jwt';
+import { FavoritesModule } from './favorites/favorites.module';
 
 
 @Module({
-  imports: [ProductModule, PrismaModule, CategoryModule, CartModule, AuthModule, ],
+  imports: [ProductModule, PrismaModule, CategoryModule, CartModule, AuthModule, FavoritesModule, ],
 })
 export class AppModule {}

@@ -29,6 +29,7 @@ model Product {
   category       Category   @relation(fields: [categoryId], references: [id])
   categoryId     Int
   CartItem       CartItem[]
+  FavoriteItem   FavoriteItem[]
 }
 
 model Cart {
@@ -46,4 +47,21 @@ model CartItem {
   quantity  Int     @default(1)
 
   @@unique([cartId, productId]) // Уникальная пара cartId+productId
+}
+
+model Favorite {
+  id          String         @id @default(uuid())
+  anonymousId String         @unique
+  products    FavoriteItem[]
+}
+
+model FavoriteItem {
+  id         String   @id @default(uuid())
+  favorite   Favorite @relation(fields: [favoriteId], references: [id])
+  favoriteId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId  Int
+
+  @@unique([favoriteId, productId])
 }
