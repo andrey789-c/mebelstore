@@ -21,15 +21,16 @@ model Category {
 }
 
 model Product {
-  id             Int        @id @default(autoincrement())
-  slug           String     @unique
+  id             Int            @id @default(autoincrement())
+  slug           String         @unique
   name           String
   price          String
   discount_price String?
-  category       Category   @relation(fields: [categoryId], references: [id])
+  category       Category       @relation(fields: [categoryId], references: [id])
   categoryId     Int
   CartItem       CartItem[]
   FavoriteItem   FavoriteItem[]
+  Order          Order[]        @relation("ProductOrder")
 }
 
 model Cart {
@@ -45,8 +46,9 @@ model CartItem {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
   quantity  Int     @default(1)
+  // Уникальная пара cartId+productId
 
-  @@unique([cartId, productId]) // Уникальная пара cartId+productId
+  @@unique([cartId, productId])
 }
 
 model Favorite {
@@ -61,7 +63,17 @@ model FavoriteItem {
   favoriteId String
 
   product   Product @relation(fields: [productId], references: [id])
-  productId  Int
+  productId Int
 
   @@unique([favoriteId, productId])
+}
+
+model Order {
+  id          String    @id @default(uuid())
+  anonymousId String
+  name        String
+  phone       String
+  address     String
+  flat        String
+  products    Product[] @relation("ProductOrder")
 }
