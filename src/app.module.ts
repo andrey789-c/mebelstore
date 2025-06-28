@@ -6,9 +6,12 @@ import { CartModule } from './cart/cart.module';
 import { AuthModule } from './auth/auth.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { OrderModule } from './order/order.module';
+import { TelegramService } from './telegram/telegram.service';
+import { TelegramModule } from './telegram/telegram.module';
 
 
 @Module({
-  imports: [ProductModule, PrismaModule, CategoryModule, CartModule, AuthModule, FavoritesModule, OrderModule, ],
+  imports: [ProductModule, PrismaModule, CategoryModule, CartModule, AuthModule, FavoritesModule, OrderModule, TelegramModule, ],
+  providers: [TelegramService],
 })
 export class AppModule {}

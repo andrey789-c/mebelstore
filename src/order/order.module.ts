@@ -6,10 +6,12 @@ import { CartService } from 'src/cart/cart.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { AuthModule } from 'src/auth/auth.module';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { TelegramModule } from 'src/telegram/telegram.module';
+import { TelegramService } from 'src/telegram/telegram.service';
 
 @Module({
-  imports: [PrismaModule, AuthModule, JwtModule],
+  imports: [PrismaModule, AuthModule, JwtModule, TelegramModule],
   controllers: [OrderController],
-  providers: [OrderService, PrismaService, CartService, JwtService],
+  providers: [OrderService, PrismaService, CartService, JwtService, TelegramService],
 })
 export class OrderModule {}
