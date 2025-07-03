@@ -1,6 +1,15 @@
-import { Body, Controller, Get, Param, Post, Req, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Req,
+  Request,
+} from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderDto } from './dto/update-order-status.dto';
 
 @Controller('order')
 export class OrderController {
@@ -18,6 +27,12 @@ export class OrderController {
 
   @Get('/:id')
   async getOrder(@Request() req, @Param() id: string) {
-    return this.orderService.getOrder(req.anonymous, id)
+    return this.orderService.getOrder(req.anonymous, +id);
   }
+
+  @Post('/update')
+  async updateStatusOrder(
+    @Request() req,
+    @Body() updateOrderDto: UpdateOrderDto,
+  ) {}
 }

@@ -4,6 +4,15 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { JwtService } from '@nestjs/jwt';
 import { CartService } from 'src/cart/cart.service';
 import { TelegramService } from 'src/telegram/telegram.service';
+import { UpdateOrderDto } from './dto/update-order-status.dto';
+
+enum OrderStatus {
+  PROCESSING,
+  CONFIRMED,
+  SHIPPING,
+  DELIVERED,
+  CANCELED,
+}
 
 @Injectable()
 export class OrderService {
@@ -34,7 +43,7 @@ export class OrderService {
     const anonymousId = this.getAnonymousId(token);
 
     if (!anonymousId) return { success: false, message: 'Вы не авторизованы' };
-    
+
     if (!Array.isArray(cart) && cart.cart && cart.cart.length > 0) {
       await this.prisma.order.create({
         data: {
@@ -74,8 +83,6 @@ export class OrderService {
 
       await this.cartService.clearCart(token);
 
-      
-
       return {
         success: true,
       };
@@ -100,7 +107,41 @@ export class OrderService {
     });
   }
 
-  async getOrder(token: string, id: string) {
+
+  async getOrdersForAdminAndSendToTg() {
+    const orders = await this.prisma.order.findMany({
+      include: {
+        products: true,
+      },
+    });
+
+    if (!orders.length) {
+      await this.telegramService.sendMessageToUser(
+        process.env.ADMIN_ID || '',
+        'Нет заказов.',
+      );
+      return { success: true, message: 'Нет заказов' };
+    }
+
+    let tgMessage = '';
+
+    orders.map((order) => {
+      let products = '';
+
+      order.products.map((product) => {
+        products += `${product.id}. ${product.name} \n`;
+      });
+
+      tgMessage += `\n<b>🛒 Заказ №${order.id}</b>\n\n👤 Имя: ${order.name}\n📞 Телефон: ${order.phone}\n🏠 Адрес: ${order.address}${order.flat ? `, кв. ${order.flat}` : ''}\n📦 Товаров: ${order.products.length}\nСтатус: ${order.status}\n\n<b>Список товаров:</b>\n${products}`;
+    });
+
+    return await this.telegramService.sendMessageToUser(
+      process.env.ADMIN_ID || '',
+      tgMessage,
+    );
+  }
+
+  async getOrder(token: string, id: number) {
     const anonymousId = this.getAnonymousId(token);
 
     if (!anonymousId) return { success: false, message: 'Вы не авторизованы' };
@@ -114,5 +155,21 @@ export class OrderService {
         products: true,
       },
     });
+  }
+
+  async updateOrderStatus(body: UpdateOrderDto, id: string) {
+    if (!this.checkStatus(body.status)) {
+      return { success: false, message: 'Недопустимый статус заказа' };
+    }
+
+    await this.prisma.order.update({
+      where: { id: +id },
+      data: { status: body.status },
+    });
+    return { success: true };
+  }
+
+  checkStatus(status: unknown): status is OrderStatus {
+    return Object.values(OrderStatus).includes(status as OrderStatus);
   }
 }

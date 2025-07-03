@@ -68,12 +68,21 @@ model FavoriteItem {
   @@unique([favoriteId, productId])
 }
 
+enum OrderStatus {
+  PROCESSING
+  CONFIRMED
+  SHIPPING
+  DELIVERED
+  CANCELED
+}
+
 model Order {
-  id          String    @id @default(uuid())
-  anonymousId String
-  name        String
-  phone       String
-  address     String
-  flat        String
-  products    Product[] @relation("ProductOrder")
+  id            Int      @id @default(autoincrement())
+  anonymousId   String
+  name          String
+  phone         String
+  address       String
+  flat          String
+  products      Product[]   @relation("ProductOrder")
+  status        OrderStatus @default(PROCESSING)
 }
