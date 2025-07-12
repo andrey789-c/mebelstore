@@ -26,7 +26,7 @@ export class OrderController {
   }
 
   @Get('/:id')
-  async getOrder(@Request() req, @Param() id: string) {
+  async getOrder(@Request() req, @Param('id') id: string) {
     return this.orderService.getOrder(req.anonymous, +id);
   }
 

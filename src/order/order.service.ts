@@ -50,7 +50,7 @@ export class OrderService {
           anonymousId,
           name,
           phone,
-          address: `${city} - ${home} ${street}`,
+          address: `${city || ''} - ${home || ''} ${street || ''}`.trim(),
           flat,
           products: {
             connect: cart.cart.map((product) => ({
@@ -146,15 +146,22 @@ export class OrderService {
 
     if (!anonymousId) return { success: false, message: 'Вы не авторизованы' };
 
-    return await this.prisma.order.findUnique({
+    const order = await this.prisma.order.findFirst({
       where: {
         anonymousId,
         id,
       },
+      
       include: {
         products: true,
       },
     });
+
+    if(!order) return {success: false, message: 'Заказ не найден'}
+
+    const { anonymousId: _, ...orderWithoutAnonymousId } = order;
+
+    return orderWithoutAnonymousId 
   }
 
   async updateOrderStatus(body: UpdateOrderDto, id: string) {
