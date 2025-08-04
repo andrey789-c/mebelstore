@@ -107,7 +107,6 @@ export class OrderService {
     });
   }
 
-
   async getOrdersForAdminAndSendToTg() {
     const orders = await this.prisma.order.findMany({
       include: {
