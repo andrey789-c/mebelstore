@@ -9,9 +9,18 @@ import { OrderModule } from './order/order.module';
 import { TelegramService } from './telegram/telegram.service';
 import { TelegramModule } from './telegram/telegram.module';
 
-
 @Module({
-  imports: [ProductModule, PrismaModule, CategoryModule, CartModule, AuthModule, FavoritesModule, OrderModule, TelegramModule, ],
+  imports: [
+    ProductModule,
+    PrismaModule,
+    CategoryModule,
+    CartModule,
+    AuthModule,
+    FavoritesModule,
+    OrderModule,
+    TelegramModule,
+  ],
   providers: [TelegramService],
+  exports: []
 })
 export class AppModule {}

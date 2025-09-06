@@ -39,6 +39,7 @@ const products = [
     discount_price: '800',
     slug: 'product1',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 2,
@@ -47,6 +48,7 @@ const products = [
     discount_price: '1200',
     slug: 'product2',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ const products = [
     discount_price: '1800',
     slug: 'product3',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 4,
@@ -63,6 +66,7 @@ const products = [
     discount_price: '1500',
     slug: 'product4',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 5,
@@ -71,6 +75,7 @@ const products = [
     discount_price: '2500',
     slug: 'product5',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 6,
@@ -79,6 +84,7 @@ const products = [
     discount_price: '750',
     slug: 'product6',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 7,
@@ -87,6 +93,7 @@ const products = [
     discount_price: '2000',
     slug: 'product7',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 8,
@@ -95,6 +102,7 @@ const products = [
     discount_price: '1700',
     slug: 'product8',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 9,
@@ -103,6 +111,7 @@ const products = [
     discount_price: '2200',
     slug: 'product9',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 10,
@@ -111,6 +120,7 @@ const products = [
     discount_price: '1400',
     slug: 'product10',
     categoryId: 1,
+    images: ['/moc/divan.jpg'],
   },
 
   // Категория: Кресла (id: 2)
@@ -121,6 +131,7 @@ const products = [
     discount_price: '400',
     slug: 'product11',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 12,
@@ -129,6 +140,7 @@ const products = [
     discount_price: '600',
     slug: 'product12',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 13,
@@ -137,6 +149,7 @@ const products = [
     discount_price: '1000',
     slug: 'product13',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 14,
@@ -145,6 +158,7 @@ const products = [
     discount_price: '1300',
     slug: 'product14',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 15,
@@ -153,6 +167,7 @@ const products = [
     discount_price: '1600',
     slug: 'product15',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 16,
@@ -161,6 +176,7 @@ const products = [
     discount_price: '800',
     slug: 'product16',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 17,
@@ -169,6 +185,7 @@ const products = [
     discount_price: '850',
     slug: 'product17',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 18,
@@ -177,6 +194,7 @@ const products = [
     discount_price: '350',
     slug: 'product18',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 19,
@@ -185,6 +203,7 @@ const products = [
     discount_price: '250',
     slug: 'product19',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 20,
@@ -193,6 +212,7 @@ const products = [
     discount_price: '950',
     slug: 'product20',
     categoryId: 2,
+    images: ['/moc/divan.jpg'],
   },
 
   // Категория: Столы (id: 3)
@@ -203,6 +223,7 @@ const products = [
     discount_price: '700',
     slug: 'product21',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 22,
@@ -211,6 +232,7 @@ const products = [
     discount_price: '350',
     slug: 'product22',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 23,
@@ -219,6 +241,7 @@ const products = [
     discount_price: '550',
     slug: 'product23',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 24,
@@ -227,6 +250,7 @@ const products = [
     discount_price: '650',
     slug: 'product24',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 25,
@@ -235,6 +259,7 @@ const products = [
     discount_price: '450',
     slug: 'product25',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 26,
@@ -243,6 +268,7 @@ const products = [
     discount_price: '700',
     slug: 'product26',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 27,
@@ -251,6 +277,7 @@ const products = [
     discount_price: '800',
     slug: 'product27',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 28,
@@ -259,6 +286,7 @@ const products = [
     discount_price: '500',
     slug: 'product28',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 29,
@@ -267,6 +295,7 @@ const products = [
     discount_price: '1100',
     slug: 'product29',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 30,
@@ -275,6 +304,7 @@ const products = [
     discount_price: '300',
     slug: 'product30',
     categoryId: 3,
+    images: ['/moc/divan.jpg'],
   },
 
   // Категория: Стулья (id: 4)
@@ -285,6 +315,7 @@ const products = [
     discount_price: '180',
     slug: 'product31',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 32,
@@ -293,6 +324,7 @@ const products = [
     discount_price: '220',
     slug: 'product32',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 33,
@@ -301,6 +333,7 @@ const products = [
     discount_price: '280',
     slug: 'product33',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 34,
@@ -309,6 +342,7 @@ const products = [
     discount_price: '450',
     slug: 'product34',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 35,
@@ -317,6 +351,7 @@ const products = [
     discount_price: '130',
     slug: 'product35',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 36,
@@ -325,6 +360,7 @@ const products = [
     discount_price: '160',
     slug: 'product36',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 37,
@@ -333,6 +369,7 @@ const products = [
     discount_price: '320',
     slug: 'product37',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 38,
@@ -341,6 +378,7 @@ const products = [
     discount_price: '250',
     slug: 'product38',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 39,
@@ -349,6 +387,7 @@ const products = [
     discount_price: '380',
     slug: 'product39',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 40,
@@ -357,6 +396,7 @@ const products = [
     discount_price: '420',
     slug: 'product40',
     categoryId: 4,
+    images: ['/moc/divan.jpg'],
   },
 
   // Категория: Шкафы (id: 5)
@@ -367,6 +407,7 @@ const products = [
     discount_price: '2300',
     slug: 'product41',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 42,
@@ -375,6 +416,7 @@ const products = [
     discount_price: '1100',
     slug: 'product42',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 43,
@@ -383,6 +425,7 @@ const products = [
     discount_price: '1700',
     slug: 'product43',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 44,
@@ -391,6 +434,7 @@ const products = [
     discount_price: '1900',
     slug: 'product44',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 45,
@@ -399,6 +443,7 @@ const products = [
     discount_price: '1400',
     slug: 'product45',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 46,
@@ -407,6 +452,7 @@ const products = [
     discount_price: '1200',
     slug: 'product46',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 47,
@@ -415,6 +461,7 @@ const products = [
     discount_price: '750',
     slug: 'product47',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 48,
@@ -423,6 +470,7 @@ const products = [
     discount_price: '2100',
     slug: 'product48',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 49,
@@ -431,6 +479,7 @@ const products = [
     discount_price: '1600',
     slug: 'product49',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
   {
     id: 50,
@@ -439,8 +488,10 @@ const products = [
     discount_price: '2800',
     slug: 'product50',
     categoryId: 5,
+    images: ['/moc/divan.jpg'],
   },
 ];
+
 
 async function main() {
   await Promise.all(

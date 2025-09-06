@@ -26,6 +26,7 @@ model Product {
   name           String
   price          String
   discount_price String?
+  images         String[]
   category       Category       @relation(fields: [categoryId], references: [id])
   categoryId     Int
   CartItem       CartItem[]
@@ -77,12 +78,12 @@ enum OrderStatus {
 }
 
 model Order {
-  id            Int      @id @default(autoincrement())
-  anonymousId   String
-  name          String
-  phone         String
-  address       String
-  flat          String
-  products      Product[]   @relation("ProductOrder")
-  status        OrderStatus @default(PROCESSING)
+  id          Int         @id @default(autoincrement())
+  anonymousId String
+  name        String
+  phone       String
+  address     String
+  flat        String
+  products    Product[]   @relation("ProductOrder")
+  status      OrderStatus @default(PROCESSING)
 }
