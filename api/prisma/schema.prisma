@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  slug     String    @unique
+  products Product[]
+}
+
+model Product {
+  id             Int            @id @default(autoincrement())
+  slug           String         @unique
+  name           String
+  price          String
+  discount_price String?
+  images         String[]
+  category       Category       @relation(fields: [categoryId], references: [id])
+  categoryId     Int
+  CartItem       CartItem[]
+  FavoriteItem   FavoriteItem[]
+  Order          Order[]        @relation("ProductOrder")
+}
+
+model Cart {
+  id          String     @id @default(uuid())
+  anonymousId String     @unique
+  items       CartItem[]
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  cartId    String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int     @default(1)
+  // Уникальная пара cartId+productId
+
+  @@unique([cartId, productId])
+}
+
+model Favorite {
+  id          String         @id @default(uuid())
+  anonymousId String         @unique
+  products    FavoriteItem[]
+}
+
+model FavoriteItem {
+  id         String   @id @default(uuid())
+  favorite   Favorite @relation(fields: [favoriteId], references: [id])
+  favoriteId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  @@unique([favoriteId, productId])
+}
+
+enum OrderStatus {
+  PROCESSING
+  CONFIRMED
+  SHIPPING
+  DELIVERED
+  CANCELED
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  anonymousId String
+  name        String
+  phone       String
+  address     String
+  flat        String
+  products    Product[]   @relation("ProductOrder")
+  status      OrderStatus @default(PROCESSING)
+}

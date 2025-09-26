@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "07d71efb-357f-4f31-a884-bcd3115d06f5",
+		"name": "mebelstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21304772"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/category/:slug",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "divan"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "get cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbm9ueW1vdXNJZCI6IjdjYTJmYTk3LTU5OTMtNDY4ZS05ZGY0LTFmMGRjOWM4ZDY0ZiIsImlhdCI6MTc0NjE2OTg1OCwiZXhwIjoxNzQ3MDMzODU4fQ.dGSO-KfQe173jKNWCPIqMfnNjFmgimwJ4ylpSumd6bA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{SERVER}}/cart",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/cart/increment/1",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"cart",
+								"increment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/cart/decrement/1",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"cart",
+								"decrement",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/cart/remove/4",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"cart",
+								"remove",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/cart/clear",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"cart",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favorite",
+			"item": [
+				{
+					"name": "get products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/favorites",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/favorites/add/1",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"favorites",
+								"add",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/favorites/remove/1",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"favorites",
+								"remove",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
