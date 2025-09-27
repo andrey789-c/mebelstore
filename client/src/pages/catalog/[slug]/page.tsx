@@ -8,7 +8,6 @@ const Category = () => {
 
 	const category = useQuery("products", () => getProducts(slug as string));
 
-	console.log(category)
 
 	return (
 		<div className="max-w-7xl mx-auto px-4 py-12">

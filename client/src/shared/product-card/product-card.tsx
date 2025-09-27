@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { memo, useCallback, useState, type FC } from "react";
+import { memo, useCallback, useEffect, useState, type FC } from "react";
 import { ProductCounter } from "./product-counter";
 import type { IProductCard } from "@/entities/models/product";
+import { useCartStore } from "@/store/cart/cart-store";
 
 interface IProductCardProps {
 	product: IProductCard;
@@ -9,11 +10,25 @@ interface IProductCardProps {
 
 export const ProductCard: FC<IProductCardProps> = memo(({ product }) => {
 	const [quantity, setQuantity] = useState(0);
+	const {cart, increment, decrement} = useCartStore()
 
-	const onToggleCart = useCallback((type: "increment" | "decrement") => {
-		setQuantity((prev) =>
-			type === "increment" ? prev + 1 : Math.max(prev - 1, 0)
-		);
+	useEffect(() => {
+		if(!cart || !cart.cart) return
+
+		const cartProduct = cart.cart.find(p => product.id === p.id)
+
+		if(cartProduct) {
+			setQuantity(cartProduct.quantity)
+		}
+	}, [product.id, cart])
+
+	const onToggleCart = useCallback(async(type: "increment" | "decrement") => {
+		if(type === 'increment') {
+			await increment(product.id)
+		} else {
+			await decrement(product.id)
+		}
+		
 	}, []);
 
 	return (
@@ -28,7 +43,7 @@ export const ProductCard: FC<IProductCardProps> = memo(({ product }) => {
 
 			<CardContent className="p-4">
 				<h4 className="font-semibold text-lg mb-3 line-clamp-2 h-12 leading-tight">{product.name}</h4>
-				{/* <p className="text-sm text-gray-600">{product}</p> */}
+
 				<div className="mt-auto flex justify-between items-center">
 					{+product.discount_price < +product.price ? (
 						<div className="font-bold text-blue-600 text-2xl" >
