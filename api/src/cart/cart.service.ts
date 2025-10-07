@@ -22,6 +22,18 @@ export class CartService {
     }
   }
 
+  private getFullImageUrls(images: string[]): string[] {
+    const baseUrl = process.env.API_URL || 'http://localhost:8080';
+    return images.map(image => {
+      // Если изображение уже содержит полный URL, возвращаем как есть
+      if (image.startsWith('http')) {
+        return image;
+      }
+      // Иначе добавляем базовый URL
+      return `${baseUrl}${image}`;
+    });
+  }
+
   async getCart(token: string) {
     const anonymousId = this.getAnonymousId(token);
 
@@ -37,6 +49,7 @@ export class CartService {
               select: {
                 id: true,
                 name: true,
+                images: true,
                 price: true,
                 category: true,
                 discount_price: true,
@@ -54,6 +67,7 @@ export class CartService {
     return {
       cart: cart.items.map((item) => ({
         ...item.product,
+        image: this.getFullImageUrls(item.product.images)[0],
         quantity: item.quantity,
       })),
       info

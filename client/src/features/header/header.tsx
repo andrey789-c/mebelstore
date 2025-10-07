@@ -29,7 +29,10 @@ export function Header() {
 						variant="outline"
 						className="bg-transparent border-0 shadow-none"
 					>
+						<a href="/cart">
 						<ShoppingCart className="h-5 w-5 bg-transparent border-0" />
+						</a>
+						
 					</Button>
 				</div>
 			</div>

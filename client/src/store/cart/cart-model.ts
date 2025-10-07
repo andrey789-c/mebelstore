@@ -34,4 +34,5 @@ export interface ICartProduct {
 	category: ICategory;
 	discount_price: string;
 	quantity: number;
+	image: string
 }
