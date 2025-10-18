@@ -4,6 +4,7 @@ import Catalog from "./pages/catalog/catalog";
 import Category from "./pages/catalog/[slug]/page";
 import { Cart } from "./pages/cart/cart";
 import { OrderPage } from "./pages/order/order";
+import { SuccessPage } from "./pages/order/success";
 
 export const router = createBrowserRouter([
 	{ path: "/", element: <HomePage /> },
@@ -11,4 +12,5 @@ export const router = createBrowserRouter([
 	{ path: "/catalog/:slug", element: <Category /> },
 	{ path: "/cart", element: <Cart /> },
 	{ path: "/order", element: <OrderPage /> },
+	{ path: "/order/success", element: <SuccessPage /> },
 ]);

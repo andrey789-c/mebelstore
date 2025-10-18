@@ -1,5 +1,6 @@
 import { CartItem } from "@/shared/cart-item";
 import { useCartStore } from "@/store/cart/cart-store";
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
 	const { cart, increment, decrement } = useCartStore();
@@ -51,9 +52,9 @@ export const Cart = () => {
 							</div>
 						</div>
 
-						<button className="w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 cursor-pointer">
+						<Link to={'/order'} className="w-full flex items-center justify-center py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 cursor-pointer">
 							Перейти к оформлению
-						</button>
+						</Link>
 					</div>
 				</div>
 			)}

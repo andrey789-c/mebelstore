@@ -1,12 +1,13 @@
+import { makeOrder } from "@/api/make-order";
 import { orderSchema, type TOrderFormData } from "@/entities/models/schema";
 import { useCartStore } from "@/store/cart/cart-store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useRouteError } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const OrderPage = () => {
 	const { cart } = useCartStore();
-	const router = useRouteError();
+	const router = useNavigate();
 
 	const {
 		register,
@@ -17,10 +18,22 @@ export const OrderPage = () => {
 	});
 
 	const onSubmit = async (data: TOrderFormData) => {
-		console.log(data)
+		console.log(data);
+
+		await makeOrder(data);
+		router("/order/success");
 	};
 
-	if (!cart) return null;
+	if (!cart || !cart.cart.length) {
+		return (
+			<div className="max-w-3xl mx-auto py-16 text-center text-gray-600">
+				<h2 className="text-2xl font-semibold mb-4">😔 Товары недоступны</h2>
+				<p className="text-gray-500">
+					Похоже, вы удалили все товары из корзины или она пуста.
+				</p>
+			</div>
+		);
+	}
 
 	return (
 		<div className="max-w-7xl mx-auto px-4 py-12">
@@ -113,14 +126,6 @@ export const OrderPage = () => {
 								/>
 							</div>
 						</div>
-
-						<button
-							type="submit"
-							disabled={isSubmitting}
-							className="w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 disabled:opacity-70"
-						>
-							{isSubmitting ? "Отправка..." : "Подтвердить заказ"}
-						</button>
 					</form>
 
 					{/* Упрощённая корзина */}
