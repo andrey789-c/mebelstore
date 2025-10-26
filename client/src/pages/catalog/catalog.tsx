@@ -1,10 +1,10 @@
 import { getCatalog } from "@/api/get-catalog";
 import { Categories } from "@/widgets/catalog/categories";
 import Skeleton from "react-loading-skeleton";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Catalog = () => {
-	const categories = useQuery("categories", getCatalog);
+	const categories = useQuery({queryKey: ["categories"], queryFn: getCatalog});
 
 
 	if (categories.isLoading)

@@ -3,7 +3,7 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./path";
 import { Layout } from "./layouts";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const queryClient = new QueryClient();
